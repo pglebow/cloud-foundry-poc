@@ -4,14 +4,18 @@ buildscript {
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.3.RELEASE")
+        classpath 'se.transmode.gradle:gradle-docker:1.2'
     }
 }
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'spring-boot'
+apply plugin: 'docker'
 
-sourceCompatibility = JavaVersion.VERSION_1_8
-targetCompatibility = JavaVersion.VERSION_1_8
+sourceCompatibility = JavaVersion.VERSION_1_7
+targetCompatibility = JavaVersion.VERSION_1_7
+mainClassName = 'com.glebow.cfpoc.Application'
+group 'com.glebow.cfpoc'
 
 repositories {
     mavenCentral()
@@ -34,6 +38,10 @@ dependencies {
     
     testCompile(group: 'junit', name: 'junit', version: '4.+')
     testCompile(group: 'org.springframework', name: 'spring-test', version: '4.+')
+}
+
+distDocker {
+    exposePort 8080
 }
 
 eclipse {

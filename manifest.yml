@@ -4,3 +4,5 @@ applications:
   path: build/libs/cloud-foundry-poc.jar
   instances: 1
   memory: 512M
+  services:
+  - mongodb
