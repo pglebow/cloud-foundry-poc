@@ -1,5 +1,5 @@
 FROM dockerfile/java:oracle-java8
-MAINTAINER philip_glebow@gap.com
+MAINTAINER pglebow@gmail.com
 EXPOSE 8080
-CMD java -jar service-harness-demo.war
-ADD service-harness-demo.war /data/service-harness-demo.war
+CMD java -jar cloud-foundry-poc.jar
+ADD cloud-foundry-poc.jar /data/cloud-foundry-poc.jar
