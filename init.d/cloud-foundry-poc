@@ -1,0 +1,62 @@
+#!/bin/bash
+# chkconfig: 2345 90 60
+# description: Dockerized examaple
+
+# Source function library.
+. /etc/init.d/functions
+
+NAME=cloud-foundry-poc
+VERSION=1.0
+CONTAINER=$NAME:$VERSION
+CONTAINER_OPTS="-d -p 80:8080"
+
+# docker run -d -p 8080:8080 --name cloud-foundry-poc cloud-foundry-poc
+
+start() {
+        echo -n "Starting $CONTAINER as $NAME: "
+        /usr/bin/docker rm $NAME 2>/dev/null
+        /usr/bin/docker run --name=$NAME -d $CONTAINER_OPTS $NAME
+        RETVAL=$?
+        touch /var/lock/subsys/$NAME
+        return $RETVAL
+}
+
+stop() {
+        echo -n "Shutting down $NAME: "
+        /usr/bin/docker kill $NAME
+        RETVAL=$?
+        rm -f /var/lock/subsys/$NAME
+        return $RETVAL
+}
+
+status() {
+        echo -n "Checking $NAME status: "
+        /usr/bin/docker top $NAME 
+        RETVAL=$?
+        return $RETVAL
+}
+
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    status)
+        status
+        ;;
+    restart)
+        stop
+        start
+        ;;
+    reload)
+        stop
+        start
+        ;;
+    *)
+        echo "Usage: $0 {start|stop|status|reload|restart[|probe]"
+        exit 1
+        ;;
+esac
+exit $?

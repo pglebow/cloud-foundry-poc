@@ -1,0 +1,6 @@
+applications:
+- name: cloud-foundry-poc
+  buildpack: java_buildpack
+  path: build/libs/cloud-foundry-poc.jar
+  instances: 1
+  memory: 512M
