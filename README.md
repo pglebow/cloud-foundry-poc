@@ -15,3 +15,12 @@ A very simple Cloud Foundry application that explores some of the basic features
 1. If you're running on a Mac, note the IP address returned from `boot2docker ip` - this will be the host that your browser should use
 1. `./buildDocker.sh`
 1. http://192.168.59.103:8080 (if not using a Mac, substitute your machine's IP or hostname)
+
+## Cloud Foundry
+1. Install the Cloud Foundry command line tools from https://github.com/cloudfoundry/cli/releases
+1. Login to your Cloud Foundry instance
+1. Create a MongoDB resource called `mongodb`
+1. Change to the root directory of this project
+1. `gradle clean build`
+1. `cf push`
+
