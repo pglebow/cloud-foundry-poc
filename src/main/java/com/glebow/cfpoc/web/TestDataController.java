@@ -45,7 +45,7 @@ public class TestDataController {
     }
     
     @RequestMapping("/mail")
-    public void mail(@RequestParam(value="to", required=false, defaultValue="philip_glebow@gap.com") String to) {
+    public void mail(@RequestParam(value="to", required=true) String to) {
         service.email(service.getAll(), to);
     }
 

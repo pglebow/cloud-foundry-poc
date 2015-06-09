@@ -16,7 +16,7 @@ mainClassName = 'com.glebow.cfpoc.Application'
 group 'com.glebow.cfpoc'
 
 repositories {
-    mavenCentral()
+    jcenter()
 }
 
 dependencies {

@@ -20,7 +20,9 @@ public class SampleWebApplicationInitializer implements ApplicationContextInitia
             appEnvironment.addActiveProfile("cloud");
             log.info("Cloud profile active");
         } else {
-            log.info("Local profile active");
+            for (String s : appEnvironment.getActiveProfiles() ) {
+                log.info("Active Profile: " + s);
+            }            
         }
         
     }
