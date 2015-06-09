@@ -1,0 +1,14 @@
+cf:
+  build: .
+  command: java -Dspring.profiles.active="docker" -jar cloud-foundry-poc.jar
+  ports:
+   - "8080:8080"
+   - "27017:27017"
+  links:
+   - mongo
+  environment:
+   - MONGO_HOST=192.168.59.103
+   - MONGO_PORT=27017
+   - MAIL_HOST=mail.google.com
+mongo:
+  image: dockerfile/mongodb
